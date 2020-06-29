@@ -134,6 +134,9 @@
 .bold {
     font-weight: bold;
 }
+.upperCase {
+    text-transform: uppercase;
+}
 
 
 /* 
@@ -142,3 +145,12 @@
     Жишээ нь:
         className='fs-16 lh-20'
 */
+
+@for $i from 1 through 1000 {
+    .fs-#{$i} {
+        font-size: $i + px;
+    }
+    .lh-#{$i} {
+        line-height: $i + px;
+    }
+}
