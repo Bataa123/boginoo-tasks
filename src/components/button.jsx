@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Button = (props) => {
-    let { children, disabled, className, ...others } = props;
+    let { onClick, children, disabled, className, ...others } = props;
     /* 
         https://boginoo.firebaseapp.com/button
 
@@ -24,6 +24,6 @@ export const Button = (props) => {
       
     */
     return (
-        <button className={className}>{children}</button>
+        <button onClick={onClick} className={className}>{children}</button>
     );
 };

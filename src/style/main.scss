@@ -20,9 +20,12 @@
         background-color: $color;
     }
 
-    @for $i from 1 through 10 {
+    @for $i from 1 through 1000 {
         .br-#{$name}-#{$i} {
             border: solid $color $i + px;
+        }
+        .bradius-#{$i} {
+            border-radius: $i + px;
         }
     }
 }
@@ -48,6 +51,9 @@
     .ma-#{$i} {
         margin: $i + px;
     }
+    .mb-#{$i} {
+        margin-bottom: $i + px;
+    }
     .mt-#{$i} {
         margin-top: $i + px;
     }
@@ -57,6 +63,16 @@
     .mr-#{$i} {
         margin-right: $i + px;
     }
+}
+.mauto {
+    margin: 0 auto;
+}
+
+.mSpecial {
+    margin: 0 auto 8px;
+}
+.mSpecial2 {
+    margin:  35px auto 8px;
 }
 
 body {
@@ -70,6 +86,13 @@ body {
 .h100 {
     height: 100%;
 }
+.bsnone {
+    border-style: unset;
+}
+.bShadowInput {
+    box-shadow: 0 0 2px 0 rgb(110, 110, 110);
+}
+
 
 
 // ЭНЭ CSS ЯМАР УЧИРТАЙГ САЙН СУДЛАХ
