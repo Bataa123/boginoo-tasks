@@ -1,6 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react-dom';
-import { useLocation, useHistory } from 'react-router-dom';
+// import { useEffect } from 'react-dom';
+import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
 import '../style/typograph.scss'
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';

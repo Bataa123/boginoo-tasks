@@ -1,15 +1,15 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import '../style/main.scss'
 import '../style/typograph.scss'
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 
 export const HomeDefault = () => {
-    const history = useHistory();
+    // const history = useHistory();
 
-    const goHome = () => {
-        history.push('/');
-    }
+    // const goHome = () => {
+    //     history.push('/');
+    // }
 
     return (
         <Layout>

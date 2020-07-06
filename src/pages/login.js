@@ -1,22 +1,16 @@
-import React from 'react';
-import { useEffect } from 'react-dom';
-import { useLocation, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+// import { useEffect } from 'react-dom';
+import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
 import '../style/typograph.scss'
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
-
-//  const usePageViews = () => {
-//     let location = useLocation();
-//     if(location.pathname == '/login') {
-
-//     }
-//     console.log(location)
-//   }
-
+import { userContext } from '../authUserProvider';
 
 export const Login = () => {
 
     let history = useHistory();
+    const {user } = useContext(userContext);
+    console.log(user);
 
     const goHome = () => {
         history.push('/');
@@ -24,6 +18,9 @@ export const Login = () => {
 
     const SwitchPassword = () => {
         history.push('/signUp')
+    }
+    const newUser = () => {
+        history.push('/newUser')
     }
 
     return (
@@ -38,7 +35,7 @@ export const Login = () => {
                 <div className='font-ubuntu  c-primary bold fs-32 lh-37 fw-bold mb-40 flex-center'>Нэвтрэх</div>
                 <div className="font-ubuntu mSpecial w-335 lh-18 normal">Цахим хаяг</div>
                 <div className='mt-5 flex flex-center ' >
-                    <Input className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='https://www.web-huudas.mn' />
+                    <Input className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
                 </div>
                 <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үг</div>
                 <div className='mt-5 flex flex-center'>
@@ -48,10 +45,8 @@ export const Login = () => {
                         <div className="font-ubuntu c-primary lh-18 normal ml-8">Цахим хаяг</div>
                         <div onClick={() => SwitchPassword()} className="font-ubuntu lh-18 normal flex ml-121">Нууц үгээ мартсан</div>
                     </div>
-                    
                     <Button className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone">Нэвтрэх</Button>
-
-                    <div className="font-ubuntu c-primary lh-18 normal mt-24 ml-8">Шинэ хэрэглэгч бол энд дарна уу?</div>
+                    <div onClick={() => newUser() } className="font-ubuntu c-primary lh-18 normal mt-24 ml-8">Шинэ хэрэглэгч бол энд дарна уу?</div>
                 </div>
             </div>
         </Layout>

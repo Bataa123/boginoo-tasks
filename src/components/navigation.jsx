@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './';
-import Login from "../pages/login"
-import { useLocation, useHistory, useRouteMatch } from 'react-router-dom';
+// import Login from "../pages/login"
+import { useLocation, useHistory } from 'react-router-dom';
 
 export const Navigation = (props) => {
     let location = useLocation();
