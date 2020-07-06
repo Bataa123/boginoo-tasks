@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import './style/main.scss';
 import { Login } from './pages/login';
+import { SignUp } from './pages/signUp';
 
 const App = () => {
     return (
@@ -19,6 +20,9 @@ const App = () => {
                     </Route>
                     <Route path="/login" exact>
                         <Login />
+                    </Route>
+                    <Route path="/signUp" exact>
+                        <SignUp />
                     </Route>
                 </Router>
             </Switch>
