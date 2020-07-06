@@ -12,16 +12,17 @@ export const ContextProvider = ({children}) => {
         password: ""
     })
 
-    const createNewUser = () => {
+    const createNewUser = (email, password) => {
         auth
-        .createUserWithEmailAndPassword(user.email, user.password)
+        .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // authContext.setUser(userCredential);
+            console.log(userCredential.user.uid);
             db.collection("Users")
                 .doc(userCredential.user.uid)
                 .set({
                     email: user.email,
-                    username: user.username,
+                    username: 'bataa',
                 })
                 .then(() => {
                     console.log('ok');

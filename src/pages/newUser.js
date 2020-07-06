@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
 import '../style/typograph.scss'
@@ -16,8 +16,27 @@ export const NewUSer = () => {
 
     const [user, setUser] = useState({
         email: "",
-        password: ""
+        password: "",
+        repassword: ""
     })
+
+    const checkPassword = () => {
+        if (user.password == user.repassword ) {
+            // alert('user uussen')
+            console.log('user uussen')
+        } else {
+            // alert('repassword buruu bn')
+            console.log('repassword buruu bn')
+        }
+    }
+
+    const signUp = () => {
+        // () => createNewUser({user}), checkPassword() 
+        if (user.password !== user.repassword) {
+            console.log('repassword buruu bn')
+        }
+        createNewUser(user.email, user.password);
+    }
 
     console.log(user)
     return (
@@ -32,16 +51,16 @@ export const NewUSer = () => {
                 <div className='font-ubuntu  c-primary bold fs-32 lh-37 fw-bold mb-40 flex-center'>Бүртгүүлэх</div>
                 <div className="font-ubuntu mSpecial w-335 lh-18 normal">Цахим хаяг</div>
                 <div className='mt-5 flex flex-center ' >
-                    <Input onChange={() => setUser({email: document.getElementById('email').value, password: user.password})} id="email" className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
+                    <Input onChange={(e) => setUser({...user, email: e.target.value})} id="email" className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
                 </div>
                 <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үг</div>
                 <div className='mt-5 flex flex-center'>
-                    <Input onChange={() => setUser({password: document.getElementById('password').value, email: user.email})} id="password"  type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
+                    <Input onChange={(e) => setUser({...user, password: e.target.value})} id="password"  type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
                 </div>
-                <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үгээ давтна уу?</div>
+                <div  className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үгээ давтна уу?</div>
                 <div className='mt-5 flex flex-center'>
-                    <Input type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
-                    <Button onClick={() => createNewUser({user}) } className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone mt-32">Бүртгүүлэх</Button>
+                    <Input onChange={(e) => setUser({...user, repassword: e.target.value})} id="repassword" type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
+                    <Button onClick={signUp} className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone mt-32">Бүртгүүлэх</Button>
                 </div>
             </div>
         </Layout>
