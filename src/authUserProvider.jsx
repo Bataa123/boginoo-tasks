@@ -46,9 +46,9 @@ export const ContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                var uid = user.uid;
+        auth.onAuthStateChanged((logged) => {
+            if (logged) {
+                var uid = logged.uid;
                 firestore
                     .collection("Users").doc(uid).get()
                     .then((data) => {
@@ -63,7 +63,7 @@ export const ContextProvider = ({ children }) => {
 
     return (
         <userContext.Provider
-            value={{ loginUser, createNewUser }}
+            value={{ loginUser, createNewUser, user }}
         >
             {children}
         </userContext.Provider>
