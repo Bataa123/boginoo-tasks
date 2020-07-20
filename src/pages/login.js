@@ -10,7 +10,7 @@ export const Login = () => {
 
     let history = useHistory();
     const {user } = useContext(userContext);
-    console.log(user);
+    // console.log(user);
 
     const goHome = () => {
         history.push('/');

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
 import '../style/typograph.scss'
@@ -14,31 +14,19 @@ export const NewUSer = () => {
         history.push('/');
     }
 
+    // const { user, setUser } = useContext(userContext);
+
+
     const [user, setUser] = useState({
         email: "",
         password: "",
         repassword: ""
     })
-
-    const checkPassword = () => {
-        if (user.password == user.repassword ) {
-            // alert('user uussen')
-            console.log('user uussen')
-        } else {
-            // alert('repassword buruu bn')
-            console.log('repassword buruu bn')
-        }
-    }
-
     const signUp = () => {
-        // () => createNewUser({user}), checkPassword() 
-        if (user.password !== user.repassword) {
-            console.log('repassword buruu bn')
-        }
-        createNewUser(user.email, user.password);
+        createNewUser(user.email, user.password, user.repassword);
     }
 
-    console.log(user)
+    // console.log(createNewUser.email)
     return (
         <Layout>
             <div className='h100 justify-center flex flex-col'>
