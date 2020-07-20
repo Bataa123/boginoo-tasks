@@ -12,6 +12,11 @@ export const ContextProvider = ({ children }) => {
         history: "",
         username: "",
     })
+    // console.log(user)
+    const logOut = () => {
+        setUser(undefined);
+        history.push('/')
+    }
 
     const loginUser = (email, password) => {
         auth
@@ -35,8 +40,8 @@ export const ContextProvider = ({ children }) => {
                         password: password,
                     })
                     .then(() => {
-                        console.log('ok');
                         history.push("/");
+                        console.log('ok');
                     })
                     .catch(error => {
                         console.log(error.message);
@@ -44,23 +49,35 @@ export const ContextProvider = ({ children }) => {
                     });
             })
     }
-
+    
     useEffect(() => {
         auth.onAuthStateChanged((logged) => {
             if (logged) {
                 var uid = logged.uid;
-                firestore
-                    .collection("Users").doc(uid).get()
+                db.collection('Users').doc(uid).get()
                     .then((data) => {
                         setUser(data.data())
                     })
+            } else {
+                console.log('alnaa')
             }
         });
     }, [])
 
+    const makeId = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    console.log(makeId(6));
+
     return (
         <userContext.Provider
-            value={{ loginUser, createNewUser, user }}
+            value={{ logOut, loginUser, createNewUser, user }}
         >
             {children}
         </userContext.Provider>

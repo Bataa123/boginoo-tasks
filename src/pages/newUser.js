@@ -38,7 +38,7 @@ export const NewUSer = () => {
         createNewUser(user.email, user.password);
     }
 
-    console.log(user)
+    // console.log(user)
     return (
         <Layout>
             <div className='h100 justify-center flex flex-col'>
