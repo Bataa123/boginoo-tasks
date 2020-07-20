@@ -58,9 +58,6 @@ export const ContextProvider = ({ children }) => {
         });
     }, [])
 
-
-
-
     return (
         <userContext.Provider
             value={{ loginUser, createNewUser, user }}
