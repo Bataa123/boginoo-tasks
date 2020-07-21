@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // import { useEffect } from 'react-dom';
 import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
@@ -8,20 +8,30 @@ import { userContext } from '../authUserProvider';
 
 export const Login = () => {
 
+    const [user, setUser] = useState({
+        email: "",
+        password: ""
+    })
+
     let history = useHistory();
+<<<<<<< HEAD
     const {user } = useContext(userContext);
     // console.log(user);
+=======
+    const { loginUser } = useContext(userContext);
+>>>>>>> b4056e5f1f291181e8fe0603610d3fcfb0c8da6e
 
     const goHome = () => {
         history.push('/');
     }
 
-    const SwitchPassword = () => {
+    const toSwitchPassword = () => {
         history.push('/signUp')
     }
-    const newUser = () => {
+    const toNewUser = () => {
         history.push('/newUser')
-    }
+    }        
+    
 
     return (
         <Layout>
@@ -35,18 +45,18 @@ export const Login = () => {
                 <div className='font-ubuntu  c-primary bold fs-32 lh-37 fw-bold mb-40 flex-center'>Нэвтрэх</div>
                 <div className="font-ubuntu mSpecial w-335 lh-18 normal">Цахим хаяг</div>
                 <div className='mt-5 flex flex-center ' >
-                    <Input className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
+                    <Input onChange={(e) => setUser({...user, email: e.target.value}) } className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
                 </div>
                 <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үг</div>
                 <div className='mt-5 flex flex-center'>
-                    <Input type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
+                    <Input  onChange={(e) => setUser({...user, password: e.target.value}) } type="password" className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
                     <div className="flex-row  mt-24 mb-39 w-381">
                         <div className="w-20 h-20 br-primary-1 bradius-4"></div>
                         <div className="font-ubuntu c-primary lh-18 normal ml-8">Цахим хаяг</div>
-                        <div onClick={() => SwitchPassword()} className="font-ubuntu lh-18 normal flex ml-121">Нууц үгээ мартсан</div>
+                        <div onClick={() => toSwitchPassword()} className="font-ubuntu lh-18 normal flex ml-121">Нууц үгээ мартсан</div>
                     </div>
-                    <Button className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone">Нэвтрэх</Button>
-                    <div onClick={() => newUser() } className="font-ubuntu c-primary lh-18 normal mt-24 ml-8">Шинэ хэрэглэгч бол энд дарна уу?</div>
+                    <Button  onClick={() =>loginUser(user.email, user.password)} className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone">Нэвтрэх</Button>
+                    <div onClick={() => toNewUser()} className="font-ubuntu c-primary lh-18 normal mt-24 ml-8">Шинэ хэрэглэгч бол энд дарна уу?</div>
                 </div>
             </div>
         </Layout>
