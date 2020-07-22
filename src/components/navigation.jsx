@@ -38,10 +38,8 @@ export const Navigation = (props) => {
                         {/* <svg className="mauto2" width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 2L10.5 10.5L19 2" stroke="#02B589" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg> */}
-                        <div className="">
-                            <div onClick={toHistory} className="font-ubuntu fs-20 lh-23 bold c-primary ml-10 upperCase"> history</div>
-                            <div onClick={logOut} className="font-ubuntu fs-20 lh-23 bold c-primary ml-10 upperCase"> log out</div>
-                        </div>
+                        <div onClick={toHistory} className="font-ubuntu fs-20 lh-23 bold c-primary ml-10 upperCase"> history</div>
+                        <div onClick={logOut} className="font-ubuntu fs-20 lh-23 bold c-primary ml-10 upperCase"> log out</div>
                     </div>
                     : location.pathname === '/login' ? <div></div> : <Button onClick={() => goLogin()} className="font-ubuntu fs-20 lh-23 bold c-default h-44 ph-26 ml-40 b-primary upperCase btn bsnone">Нэвтрэх</Button>
             }
