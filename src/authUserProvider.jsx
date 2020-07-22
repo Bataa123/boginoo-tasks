@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { auth, db } from './firebase';
-// import { firestore } from 'firebase';
 
 export const userContext = createContext();
 
@@ -12,7 +11,7 @@ export const ContextProvider = ({ children }) => {
         history: "",
         username: "",
     })
-    // console.log(user)
+
     const logOut = () => {
         setUser(undefined);
         history.push('/')
@@ -20,7 +19,7 @@ export const ContextProvider = ({ children }) => {
 
     const loginUser = (email, password) => {
         auth
-            .signInWithEmailAndPassword(email, password).then(() => {history.push('/'); console.log('ok')})
+            .signInWithEmailAndPassword(email, password).then(() => { history.push('/'); console.log('ok') })
             .catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -53,7 +52,37 @@ export const ContextProvider = ({ children }) => {
                     });
             })
     }
-    
+
+    const createNewUrl = (originialUrl) => {
+        const randomNumber = Math.floor(Math.random() * 1000000).toString();
+        console.log(randomNumber)
+        db.collection("newUrls")
+            .doc(randomNumber)
+            .set({
+                originialUrl: originialUrl,
+            })
+            .then(() => {
+                history.push("/");
+                console.log('ok');
+            })
+            .catch(error => {
+                console.log(error.message);
+                alert(error.message);
+            });
+    }
+
+    const takeUrl = (number) => {
+        if (db !== undefined) {
+            db.collection('newUrls').doc(number.toString()).get()
+                .then((res) => {
+                    window.location.href = res.data().originialUrl;
+                    console.log(res.data().originialUrl)
+                })
+        }
+    }
+
+
+
     useEffect(() => {
         auth.onAuthStateChanged((logged) => {
             if (logged) {
@@ -68,20 +97,12 @@ export const ContextProvider = ({ children }) => {
         });
     }, [])
 
-    const makeId = (length) => {
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-           result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
-    console.log(makeId(6));
+
+
 
     return (
         <userContext.Provider
-            value={{ logOut, loginUser, createNewUser, user }}
+            value={{ takeUrl, createNewUrl, logOut, loginUser, createNewUser, user }}
         >
             {children}
         </userContext.Provider>

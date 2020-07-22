@@ -9,8 +9,9 @@ import './style/main.scss';
 import { Login } from './pages/login';
 import { SignUp } from './pages/signUp';
 import { NewUSer } from './pages/newUser';
+import { SwithPath } from './components/switchPath.jsx'
 import { History } from './pages/history';
-import { ContextProvider } from './authUserProvider'
+import { ContextProvider } from './authUserProvider';
 
 const App = () => {
     return (
@@ -30,8 +31,11 @@ const App = () => {
                         <Route path="/newUser" >
                             <NewUSer />
                         </Route>
-                        <Route path="/history" >
+                        <Route path="/history">
                             <History />
+                        </Route>
+                        <Route path="*">
+                            <SwithPath />
                         </Route>
                     </Router>
                 </Switch>

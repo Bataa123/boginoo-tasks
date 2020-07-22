@@ -8,7 +8,7 @@ import { userContext } from '../authUserProvider';
 export const NewUSer = () => {
 
     const history = useHistory();
-    const {createNewUser} = useContext(userContext);
+    const { createNewUser } = useContext(userContext);
 
     const goHome = () => {
         history.push('/');
@@ -51,21 +51,21 @@ export const NewUSer = () => {
                 <div className="font-ubuntu mSpecial w-335 lh-18 normal">Цахим хаяг</div>
                 <div className='mt-5 flex flex-center ' >
                     <Input
-                        onChange={(e) => setUser({...user, email: e.target.value})} 
-                        id="email"  type="email" 
+                        onChange={(e) => setUser({ ...user, email: e.target.value })}
+                        id="email" type="email"
                         className=" mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='name@mail.domain' />
                 </div>
                 <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үг</div>
                 <div className='mt-5 flex flex-center'>
-                    <Input 
-                        onChange={(e) => setUser({...user, password: e.target.value})} 
-                        id="password"  type="password"
+                    <Input
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                        id="password" type="password"
                         className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
                 </div>
-                <div  className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үгээ давтна уу?</div>
+                <div className="font-ubuntu mSpecial2 w-335 lh-18 normal">Нууц үгээ давтна уу?</div>
                 <div className='mt-5 flex flex-center'>
-                    <Input 
-                        onChange={(e) => setUser({...user, repassword: e.target.value})} 
+                    <Input
+                        onChange={(e) => setUser({ ...user, repassword: e.target.value })}
                         id="repassword" type="password"
                         className="mauto bShadowInput bsnone fs-20 ph-24 w-381 pb-10" placeholder='••••••••••' />
                     <Button onClick={signUp} className=" font-ubuntu fs-20 lh-23 bold c-default h-44 w-383 ph-26 b-primary upperCase btn bsnone mt-32">Бүртгүүлэх</Button>
