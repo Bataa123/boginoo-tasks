@@ -29,6 +29,11 @@
         }
     }
 }
+@for $i from 0 through 1 {
+    .opacity-#{$i} {
+        opacity: $i;
+    }
+}
 
 @for $i from 1 through 1000 {
     .h-#{$i} {
@@ -87,9 +92,11 @@ body {
 .w100 {
     width: 100%;
 }
-
 .h100 {
     height: 100%;
+}
+.h50 {
+    height: 50%;
 }
 .bsnone {
     border-style: unset;

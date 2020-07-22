@@ -22,8 +22,6 @@ export const NewUSer = () => {
         password: "",
         repassword: ""
     })
-<<<<<<< HEAD
-=======
 
     // const checkPassword = () => {
     //     if (user.password == user.repassword ) {
@@ -35,16 +33,11 @@ export const NewUSer = () => {
     //     }
     // }
 
->>>>>>> b4056e5f1f291181e8fe0603610d3fcfb0c8da6e
     const signUp = () => {
         createNewUser(user.email, user.password, user.repassword);
     }
 
-<<<<<<< HEAD
-    // console.log(createNewUser.email)
-=======
     // console.log(user)
->>>>>>> b4056e5f1f291181e8fe0603610d3fcfb0c8da6e
     return (
         <Layout>
             <div className='h100 justify-center flex flex-col'>

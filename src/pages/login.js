@@ -14,12 +14,7 @@ export const Login = () => {
     })
 
     let history = useHistory();
-<<<<<<< HEAD
-    const {user } = useContext(userContext);
-    // console.log(user);
-=======
     const { loginUser } = useContext(userContext);
->>>>>>> b4056e5f1f291181e8fe0603610d3fcfb0c8da6e
 
     const goHome = () => {
         history.push('/');
