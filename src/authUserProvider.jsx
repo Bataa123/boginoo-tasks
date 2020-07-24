@@ -19,7 +19,7 @@ export const ContextProvider = ({ children }) => {
 
     const loginUser = (email, password) => {
         auth
-            .signInWithEmailAndPassword(email, password).then(() => { history.push('/'); console.log('ok') })
+            .signInWithEmailAndPassword(email, password).then(() => { history.push('/'); console.log('userOrson') })
             .catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -53,17 +53,34 @@ export const ContextProvider = ({ children }) => {
             })
     }
 
-    const createNewUrl = (originialUrl) => {
+    const createNewUrl = (givenUrl) => {
         const randomNumber = Math.floor(Math.random() * 1000000).toString();
         console.log(randomNumber)
         db.collection("newUrls")
             .doc(randomNumber)
             .set({
-                originialUrl: originialUrl,
+                givenUrl: givenUrl,
+                tinyUrl: `https://everytest-6b105.web.app/${randomNumber}`
             })
             .then(() => {
-                history.push("/");
-                console.log('ok');
+                // history.push("/");
+                auth.onAuthStateChanged((res) => {
+                    if (res !== undefined) {
+                        const uid = res.uid
+                        console.log(user.history)
+                        var takeHistory = user.history;
+                        takeHistory.push({
+                            givenUrl: givenUrl,
+                            tinyUrl: `https://everytest-6b105.web.app/${randomNumber}`
+                        }
+                        )
+                        console.log(takeHistory)
+
+                        db.collection('Users').doc(uid).set({
+                            history: takeHistory
+                        }, { merge: true })
+                    }
+                })
             })
             .catch(error => {
                 console.log(error.message);
@@ -71,12 +88,19 @@ export const ContextProvider = ({ children }) => {
             });
     }
 
+
     const takeUrl = (number) => {
+        console.log(number)
         if (db !== undefined) {
             db.collection('newUrls').doc(number.toString()).get()
                 .then((res) => {
-                    window.location.href = res.data().originialUrl;
-                    console.log(res.data().originialUrl)
+                    if (res === undefined) {
+                        history.push("/")
+                        console.log('ok')
+                    } else {
+                        console.log(res)
+                        window.location.href = res.data().givenUrl;
+                    }
                 })
         }
     }
@@ -96,8 +120,6 @@ export const ContextProvider = ({ children }) => {
             }
         });
     }, [])
-
-
 
 
     return (

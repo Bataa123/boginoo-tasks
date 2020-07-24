@@ -18,26 +18,24 @@ const App = () => {
         <Router>
             <ContextProvider>
                 <Switch>
-                    <Router>
-                        <Route path="/" exact>
-                            <HomeDefault />
-                        </Route>
-                        <Route path="/login" >
-                            <Login />
-                        </Route>
-                        <Route path="/signUp" >
-                            <SignUp />
-                        </Route>
-                        <Route path="/newUser" >
-                            <NewUSer />
-                        </Route>
-                        <Route path="/history">
-                            <History />
-                        </Route>
-                        <Route path="*">
-                            <SwithPath />
-                        </Route>
-                    </Router>
+                    <Route path="/" exact>
+                        <HomeDefault />
+                    </Route>
+                    <Route path="/login" >
+                        <Login />
+                    </Route>
+                    <Route path="/signUp" >
+                        <SignUp />
+                    </Route>
+                    <Route path="/newUser" >
+                        <NewUSer />
+                    </Route>
+                    <Route path="/history">
+                        <History />
+                    </Route>
+                    <Route path="*">
+                        <SwithPath />
+                    </Route>
                 </Switch>
             </ContextProvider>
         </Router>
