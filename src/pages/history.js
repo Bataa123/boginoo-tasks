@@ -19,14 +19,14 @@ export const History = () => {
 
     const TakeUrl = () => {
         if (user.history.length !== 0) {
-            return user.history.map((cur, index) => {
+            return user.history.map((cur, input) => {
                 return (
-                    <div className="flex-row justify-between">
-                        <div className='flex-column' key={index}>
+                    <div key={input} className="flex-row justify-between">
+                        <div className='flex-column'>
                             <div style={{ opacity: '0.5' }} className='font-ubuntu w-350 mt-40 fs-16 lh-18  c-black'>Өгөгдсөн холбоос:</div>
                             <div>{cur.givenUrl}</div>
                         </div>
-                        <div className='flex-column' key={index}>
+                        <div className='flex-column'>
                             <div style={{ opacity: '0.5' }} className='font-ubuntu w-350 mt-40 fs-16 lh-18 c-black'>Богино холбоос:</div>
                             <div>{cur.tinyUrl}</div>
                         </div>

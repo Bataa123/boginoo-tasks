@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../style/main.scss'
 import '../style/typograph.scss'
-import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
+import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components';
 
 //  const usePageViews = () => {
 //     let location = useLocation();
@@ -14,7 +14,7 @@ import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } fro
 //   }
 
 
-export const SignUp = () => {
+export const Password = () => {
 
     let history = useHistory();
 

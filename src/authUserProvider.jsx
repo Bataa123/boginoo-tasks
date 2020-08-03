@@ -19,7 +19,12 @@ export const ContextProvider = ({ children }) => {
 
     const loginUser = (email, password) => {
         auth
-            .signInWithEmailAndPassword(email, password).then(() => { history.push('/'); console.log('userOrson') })
+            .signInWithEmailAndPassword(email, password).then((res) => {
+                console.log(res) 
+                history.push('/');
+                console.log('userOrson');
+                setUser(res)
+            })
             .catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -116,7 +121,7 @@ export const ContextProvider = ({ children }) => {
                         setUser(data.data())
                     })
             } else {
-                console.log('alnaa')
+                console.log('gg user')
             }
         });
     }, [])

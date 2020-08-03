@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './style/main.scss';
 import { Login } from './pages/login';
-import { SignUp } from './pages/signUp';
+import { Password } from './pages/password';
 import { NewUSer } from './pages/newUser';
 import { SwithPath } from './components/switchPath.jsx'
 import { History } from './pages/history';
@@ -24,8 +24,8 @@ const App = () => {
                     <Route path="/login" >
                         <Login />
                     </Route>
-                    <Route path="/signUp" >
-                        <SignUp />
+                    <Route path="/password" >
+                        <Password />
                     </Route>
                     <Route path="/newUser" >
                         <NewUSer />
